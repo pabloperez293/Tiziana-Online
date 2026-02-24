@@ -1,120 +1,70 @@
-let products = [
-  {
-    id: 1,
-    name: "Papa Negra",
-    minorista: 1000,
-    mayorista: 13500,
-    unidadMinorista: "kg",
-    unidadMayorista: "bolsa"
-  },
-  {
-    id: 2,
-    name: "Maple de Huevo",
-    minorista: 5500,
-    mayorista: 27500,
-    unidadMinorista: "unidad",
-    unidadMayorista: "1/2 cajón"
-  },
-  {
-    id: 3,
-    name: "Tomate Redondo",
-    minorista: 2000,
-    mayorista: 25000,
-    unidadMinorista: "kg",
-    unidadMayorista: "cajón"
-  }
-];
-
 let cart = [];
-let orderNumber = 1000;
+let productos = [];
 
-function renderProducts() {
+fetch("productos.json")
+  .then(res => res.json())
+  .then(data => {
+    productos = data;
+    renderProductos(productos);
+  });
+
+function renderProductos(lista) {
   const container = document.getElementById("products-container");
   container.innerHTML = "";
 
-  products.forEach(product => {
+  lista.forEach(prod => {
     container.innerHTML += `
-      <div class="product-card">
-        <h3>${product.name}</h3>
-        <div class="price">Minorista: $${product.minorista} x ${product.unidadMinorista}</div>
-        <div class="price">Mayorista: $${product.mayorista} x ${product.unidadMayorista}</div>
-        <button onclick="addToCart(${product.id})">Agregar</button>
+      <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
+        <img src="${prod.imagen}" class="w-full h-48 object-cover rounded-lg">
+        <h3 class="mt-3 font-bold text-lg">${prod.nombre}</h3>
+        <p class="text-gray-600">Minorista: $${prod.precio_minorista}</p>
+        <p class="text-red-700 font-semibold">Mayorista: $${prod.precio_mayorista}</p>
+        <button onclick="addToCart(${prod.id})"
+          class="mt-3 w-full bg-red-700 text-white py-2 rounded-lg hover:bg-red-800">
+          Agregar
+        </button>
       </div>
     `;
   });
 }
 
 function addToCart(id) {
-  const product = products.find(p => p.id === id);
-  cart.push(product);
+  const producto = productos.find(p => p.id === id);
+  cart.push(producto);
   updateCart();
 }
 
 function updateCart() {
-  const cartItems = document.getElementById("cart-items");
-  const cartCount = document.getElementById("cart-count");
-  const cartTotal = document.getElementById("cart-total");
+  const items = document.getElementById("cart-items");
+  const count = document.getElementById("cart-count");
+  const totalSpan = document.getElementById("cart-total");
 
-  cartItems.innerHTML = "";
+  items.innerHTML = "";
   let total = 0;
 
   cart.forEach(item => {
-    cartItems.innerHTML += `<p>${item.name} - $${item.minorista}</p>`;
-    total += item.minorista;
+    items.innerHTML += `<p class="text-sm">${item.nombre} - $${item.precio_minorista}</p>`;
+    total += item.precio_minorista;
   });
 
-  cartCount.innerText = cart.length;
-  cartTotal.innerText = total;
+  count.textContent = cart.length;
+  totalSpan.textContent = total;
 }
 
 function toggleCart() {
-  document.getElementById("cart").classList.toggle("active");
+  const cartDiv = document.getElementById("cart");
+  cartDiv.classList.toggle("translate-x-full");
 }
 
 function checkout() {
-  if(cart.length === 0) {
-    alert("El carrito está vacío");
-    return;
-  }
-
-  orderNumber++;
-
-  let message = `Hola Tiziana 👋%0A`;
-  message += `Pedido N° TIZ-${orderNumber}%0A%0A`;
-
-  let total = 0;
+  let mensaje = "Pedido TIZIANA%0A";
 
   cart.forEach(item => {
-    message += `- ${item.name} $${item.minorista}%0A`;
-    total += item.minorista;
+    mensaje += `- ${item.nombre}%0A`;
   });
 
-  message += `%0ATotal estimado: $${total}%0A`;
-  message += `%0ACoordinar entrega en 3 de Febrero.`;
+  const orden = Math.floor(Math.random() * 100000);
+  mensaje += `%0AN° Orden: ${orden}`;
 
-  window.open(`https://wa.me/5491138230491?text=${message}`, "_blank");
-
-  cart = [];
-  updateCart();
+  window.open(`https://wa.me/541138230491?text=${mensaje}`, "_blank");
 }
-
-function filterProducts() {
-  const search = document.getElementById("searchInput").value.toLowerCase();
-  const filtered = products.filter(p => p.name.toLowerCase().includes(search));
-  
-  const container = document.getElementById("products-container");
-  container.innerHTML = "";
-
-  filtered.forEach(product => {
-    container.innerHTML += `
-      <div class="product-card">
-        <h3>${product.name}</h3>
-        <div class="price">Minorista: $${product.minorista} x ${product.unidadMinorista}</div>
-        <div class="price">Mayorista: $${product.mayorista} x ${product.unidadMayorista}</div>
-        <button onclick="addToCart(${product.id})">Agregar</button>
-      </div>
-    `;
-  });
-}
-
-renderProducts();

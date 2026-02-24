@@ -75,7 +75,23 @@ body {
   font-size: 14px;
   margin-bottom: 5px;
 }
+.fundador {
+  background: #f9f9f9;
+  padding: 60px 20px;
+}
 
+.fundador-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.fundador img {
+  width: 300px;
+}
 button {
   background-color: #8B0000;
   color: white;

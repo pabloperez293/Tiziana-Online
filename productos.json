@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ensalada Mixta",
+    "categoria": "Listos",
+    "unidad": "bandeja",
+    "precio_minorista": 2500,
+    "precio_mayorista": 2200,
+    "imagen": "assets/ensalada.jpg",
+    "mas_vendido": true
+
+  },
+  {
+    "id": 2,
+    "nombre": "Zapallo Anco en Rodajas",
+    "categoria": "Verduras",
+    "unidad": "bandeja",
+    "precio_minorista": 1800,
+    "precio_mayorista": 1500,
+    "imagen": "assets/bandejaAnco.jpg",
+    "mas_vendido": true
+
+  },
+  {
+    "id": 3,
+    "nombre": "Duraznos en Lata Molto",
+    "categoria": "Almacén",
+    "unidad": "lata",
+    "precio_minorista": 2200,
+    "precio_mayorista": 1900,
+    "imagen": "assets/durazno.jpg",
+    "mas_vendido": true
+
+  },
+  {
+    "id": 4,
+    "nombre": "Tomate Redondo",
+    "categoria": "Verduras",
+    "unidad": "kg",
+    "precio_minorista": 1500,
+    "precio_mayorista": 1300,
+    "imagen": "assets/tomate.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Zapallito",
+    "categoria": "Verduras",
+    "unidad": "kg",
+    "precio_minorista": 1400,
+    "precio_mayorista": 1200,
+    "imagen": "assets/zapallito.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Papa Negra",
+    "categoria": "Verduras",
+    "unidad": "kg",
+    "precio_minorista": 900,
+    "precio_mayorista": 750,
+    "imagen": "assets/papa.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Manzana Roja",
+    "categoria": "Frutas",
+    "unidad": "kg",
+    "precio_minorista": 1600,
+    "precio_mayorista": 1400,
+    "imagen": "assets/manzana.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Ensalada de Frutas",
+    "categoria": "Listos",
+    "unidad": "vaso",
+    "precio_minorista": 2000,
+    "precio_mayorista": 1700,
+    "imagen": "assets/ensalada-frutas.jpg"
+  }
+]
