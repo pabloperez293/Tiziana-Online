@@ -95,35 +95,65 @@ function renderProductos(lista) {
 
 // Crea y retorna el HTML de una tarjeta de producto
 function crearCard(prod) {
+
   const precio = prod.precio[modoPrecio];
+
   return `
-    <div class="bg-white rounded-xl shadow-md p-4 relative hover:scale-105 transition">
-      ${prod.destacado ? `
-        <span class="absolute top-2 left-2 bg-yellow-400 text-xs px-2 py-1 rounded-full">
-          ⭐ Destacado
-        </span>` : ""}
-      <img src="${prod.imagen}" 
-           class="h-40 w-full object-cover rounded-lg mb-3">
-      <h3 class="font-bold text-lg">${prod.nombre}</h3>
-      <p class="text-gray-500 text-sm">
+  
+  <div class="product-card bg-white rounded-[30px] overflow-hidden shadow-xl hover:-translate-y-2 transition duration-300 relative">
+
+    ${prod.destacado ? `
+      <span class="absolute top-4 left-4 z-20 bg-red-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+        PROMO
+      </span>
+    ` : ""}
+
+    <div class="overflow-hidden">
+      <img 
+        src="${prod.imagen}" 
+        class="h-72 w-full object-cover hover:scale-110 transition duration-500"
+      >
+    </div>
+
+    <div class="p-6">
+
+      <h3 class="text-2xl font-bold mb-2">
+        ${prod.nombre}
+      </h3>
+
+      <p class="text-gray-500 text-sm mb-2">
         Por ${prod.unidad}
       </p>
-      <p class="text-red-700 font-bold text-lg mt-2">
+
+      <p class="text-red-700 text-2xl font-black mb-5">
         $${precio}
       </p>
-      <div class="flex items-center gap-2 mt-3">
-        <input type="number" min="1" value="1"
+
+      <div class="flex gap-3">
+
+        <input 
+          type="number"
+          min="1"
+          value="1"
           id="cant-${prod.id}"
-          class="w-16 border rounded p-1 text-center">
-        <button onclick="agregarAlCarrito(${prod.id})"
-          class="bg-red-700 text-white px-3 py-1 rounded-lg">
+          class="w-20 border rounded-xl px-3 py-2 text-center"
+        >
+
+        <button
+          onclick="addToCart(${prod.id})"
+          class="flex-1 bg-red-700 hover:bg-red-800 text-white py-3 rounded-2xl font-bold transition"
+        >
           Agregar
         </button>
+
       </div>
+
     </div>
+
+  </div>
+
   `;
 }
-
 // AGREGAR AL CARRITO
 
 // Agrega un producto al carrito, sumando cantidad si ya existe
