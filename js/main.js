@@ -2,6 +2,34 @@
 let cart = [];
 let productos = [];
 let modoPrecio = "minorista";
+let clienteIndex = 0;
+// Lista de imágenes locales dentro de assets/provedor
+const clienteFiles = [
+  "assets/provedor/bonafide-logo.png",
+  "assets/provedor/brixton.jpg",
+  "assets/provedor/crumbs.jpg",
+  "assets/provedor/desembarco.jpg",
+  "assets/provedor/larosa.jpg",
+  "assets/provedor/martinez.jpg",
+  "assets/provedor/mordere.jpg",
+  "assets/provedor/mostaza.jpg",
+  "assets/provedor/mundozoe.jpg",
+  "assets/provedor/osiris.jpg",
+  "assets/provedor/salonindependencia.jpg",
+  "assets/provedor/shizen.jpg",
+  "assets/provedor/sushipop.jpg"
+];
+
+function formatNameFromFile(path) {
+  const name = path.split("/").pop().split(".")[0];
+  return name.replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
+
+const clientes = clienteFiles.map(p => ({
+  nombre: formatNameFromFile(p),
+  imagen: p,
+  descripcion: "Cliente satisfecho con nuestros productos"
+}));
 
 // Esperar que cargue el HTML
 document.addEventListener("DOMContentLoaded", function () {
@@ -12,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
       productos = data;
       renderProductos(productos);
     });
+
+  renderClientes();
+  startCarouselAutoplay();
 
 });
 
@@ -261,4 +292,81 @@ function activarFiltro(tipo) {
   else if (tipo === "todos") {
     renderProductos(productos);
   }
+}
+
+function renderClientes() {
+  const track = document.getElementById("client-carousel");
+  if (!track) return;
+
+  // Agrupar clientes en slides de N por slide
+  const perSlide = 4;
+  function chunkArray(arr, size) {
+    const result = [];
+    for (let i = 0; i < arr.length; i += size) result.push(arr.slice(i, i + size));
+    return result;
+  }
+
+  const slides = chunkArray(clientes, perSlide);
+
+  track.innerHTML = slides.map(group => `
+    <div class="carousel-item min-w-full p-6">
+      <div class="client-grid max-w-6xl mx-auto grid gap-6">
+        ${group.map(c => `
+          <div class="client-card flex flex-col items-center gap-3 p-4">
+            <div class="overflow-hidden rounded-[12px] bg-white p-3">
+              <img src="${c.imagen}" alt="${c.nombre}" class="client-logo" />
+            </div>
+            <div class="text-center">
+              <h5 class="font-bold text-sm text-red-700">${c.nombre}</h5>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+
+  // almacenar número de slides para la navegación
+  window.__clientSlidesCount = slides.length;
+  clienteIndex = clienteIndex % (window.__clientSlidesCount || 1);
+  updateCarousel();
+}
+
+function updateCarousel() {
+  const track = document.getElementById("client-carousel");
+  if (!track) return;
+  track.style.transform = `translateX(-${clienteIndex * 100}%)`;
+}
+
+// Autoplay
+let carouselInterval = null;
+function startCarouselAutoplay() {
+  stopCarouselAutoplay();
+  carouselInterval = setInterval(() => {
+    nextClient();
+  }, 4000);
+  // Pausa al pasar el cursor
+  const track = document.getElementById("client-carousel");
+  if (track && track.parentElement) {
+    track.parentElement.addEventListener("mouseenter", stopCarouselAutoplay);
+    track.parentElement.addEventListener("mouseleave", startCarouselAutoplay);
+  }
+}
+
+function stopCarouselAutoplay() {
+  if (carouselInterval) {
+    clearInterval(carouselInterval);
+    carouselInterval = null;
+  }
+}
+
+function prevClient() {
+  const slides = window.__clientSlidesCount || Math.max(1, clientes.length);
+  clienteIndex = (clienteIndex - 1 + slides) % slides;
+  updateCarousel();
+}
+
+function nextClient() {
+  const slides = window.__clientSlidesCount || Math.max(1, clientes.length);
+  clienteIndex = (clienteIndex + 1) % slides;
+  updateCarousel();
 }
