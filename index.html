@@ -96,7 +96,7 @@
   </section>
 
   <!-- BENEFICIOS -->
-  <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-6">
+  <section id="nosotros" class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-6">
 
     <div class="bg-white rounded-3xl p-8 shadow-lg hover:-translate-y-1 transition">
       <h3 class="text-2xl font-bold text-red-700 mb-3">
@@ -199,31 +199,33 @@
 
     <div class="max-w-7xl mx-auto bg-gradient-to-r from-red-600 to-red-700 rounded-[40px] overflow-hidden shadow-2xl">
 
-      <div class="grid lg:grid-cols-2 items-center">
+      <div class="grid gap-8 lg:grid-cols-2 items-center">
 
-        <div class="p-12 text-white">
+        <div class="p-10 md:p-12 text-center lg:text-left">
 
           <p class="uppercase tracking-[5px] font-bold mb-4 text-sm">
             Promoción semanal
           </p>
 
-          <h3 class="text-5xl font-black leading-tight mb-6">
+          <h3 class="text-4xl md:text-5xl font-black leading-tight mb-6">
             10% OFF en compras mayoristas.
           </h3>
 
-          <p class="text-lg text-red-100 mb-8 leading-relaxed">
+          <p class="text-base md:text-lg text-red-100 mb-8 leading-relaxed">
             Aprovechá descuentos especiales en cajones, bolsas y combos.
           </p>
 
-          <button class="bg-white text-red-700 px-8 py-4 rounded-2xl font-black hover:scale-105 transition">
-            Pedir ahora
-          </button>
+          <div class="flex justify-center lg:justify-start">
+            <button class="bg-white text-red-700 px-8 py-4 rounded-2xl font-black hover:scale-105 transition w-full sm:w-auto max-w-[260px]">
+              Pedir ahora
+            </button>
+          </div>
 
         </div>
 
         <img
           src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=1200&auto=format&fit=crop"
-          class="h-full w-full object-cover"
+          class="h-auto w-full min-h-[260px] object-cover"
         >
 
       </div>
@@ -294,15 +296,7 @@
 
       <div class="bg-[#f8f5f5] rounded-[35px] overflow-hidden shadow-xl">
         <div class="aspect-[4/3] w-full">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13198.04211195794!2d-58.6501239!3d-34.6101444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb17f79d55c9%3A0x5cb841b0d1dc4be4!2sPablo%20Podest%C3%A1%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1692060000000!5m2!1ses!2sar"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d821.2172581575753!2d-58.60694868912427!3d-34.582180288818705!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb9d2a3d24ee3%3A0x2049537352c151da!2sTIENDA%20DE%20FRUTAS%20Y%20VERDURAS%20TIZIANA!5e0!3m2!1ses-419!2sar!4v1780579703983!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
 
@@ -330,56 +324,6 @@
     </div>
 
   </footer>
-
-<button
-  onclick="toggleCart()"
-  class="fixed bottom-6 right-6 bg-red-700 hover:bg-red-800 text-white w-16 h-16 rounded-full shadow-2xl text-2xl z-40"
->
-  🛒
-</button>
-  <!-- CARRITO -->
-
-<div
-  id="cart"
-  class="fixed top-0 right-0 w-[380px] h-full bg-white shadow-2xl z-50 transform translate-x-full transition duration-300 flex flex-col"
->
-
-  <div class="bg-red-700 text-white p-5 flex items-center justify-between">
-
-    <h3 class="text-2xl font-black">
-      Mi Pedido
-    </h3>
-
-    <button onclick="toggleCart()">
-      ✖
-    </button>
-
-  </div>
-
-  <div
-    id="cart-items"
-    class="flex-1 overflow-y-auto p-5 space-y-4"
-  >
-  </div>
-
-  <div class="border-t p-5">
-
-    <div class="flex justify-between mb-4 text-xl font-bold">
-      <span>Total:</span>
-      <span>$<span id="cart-total">0</span></span>
-    </div>
-
-    <button
-      onclick="checkout()"
-      class="w-full bg-red-700 hover:bg-red-800 text-white py-4 rounded-2xl font-black"
-    >
-      Finalizar por WhatsApp
-    </button>
-
-  </div>
-
-</div>
-
 
   <script>
     console.log('Tiziana Distribuidora cargada correctamente');
