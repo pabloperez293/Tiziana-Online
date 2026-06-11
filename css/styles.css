@@ -162,104 +162,84 @@ button:hover {
   opacity: 1;
   transform: translateY(0);
 }
+/* =========================
+   PROVEEDORES
+========================= */
+
+.proveedores-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: max-content;
+
+  animation: scrollLogos 30s linear infinite;
+}
+
+.logo-track img {
+  height: 120px;
+  width: auto;
+
+  object-fit: contain;
+
+  transition: all .3s ease;
+
+  filter: grayscale(100%);
+  opacity: .75;
+}
+
+.logo-track img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+@keyframes scrollLogos {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Fade al entrar en pantalla */
+
+#proveedores {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all .8s ease;
+}
+
+#proveedores.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .logo-track {
+    gap: 35px;
+  }
+
+  .logo-track img {
+    height: 80px;
+  }
+
+}
 footer {
   background: #8b0000;
   color: white;
   text-align: center;
   padding: 15px;
   margin-top: 30px;
-}
-
-/* Carrusel de clientes */
-.carousel-track {
-  display: flex;
-  width: 100%;
-  will-change: transform;
-}
-
-.carousel-item {
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 2.5rem;
-}
-
-.carousel-item img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Controles (botones) ya están en el HTML; se ajustan aquí para tamaños pequeños */
-@media (max-width: 640px) {
-  .carousel-item .h-96 {
-    height: 240px;
-  }
-}
-
-/* Imágenes de clientes: tamaño reducido, responsive y sombra */
-.client-image {
-  display: block;
-  max-width: 320px;
-  max-height: 160px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  background: white;
-  padding: 12px;
-}
-
-@media (min-width: 1024px) {
-  .client-image {
-    max-width: 420px;
-    max-height: 220px;
-    padding: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .client-image {
-    max-width: 220px;
-    max-height: 120px;
-    padding: 8px;
-  }
-}
-
-/* Grid para mostrar varias logos por slide */
-.client-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.25rem;
-  align-items: center;
-}
-
-.client-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.client-logo {
-  display: block;
-  max-width: 180px;
-  max-height: 100px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  background: white;
-  padding: 8px;
-}
-
-@media (min-width: 640px) {
-  .client-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 1024px) {
-  .client-grid { grid-template-columns: repeat(4, 1fr); }
-  .client-logo { max-width: 220px; max-height: 120px; padding: 12px; }
 }

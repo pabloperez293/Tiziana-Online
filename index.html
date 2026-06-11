@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tiziana Distribuidora</title>
+  <title>Tiziana Distribuidora | Frutas y Verduras Mayorista en 3 de Febrero
+</title>
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/Tiziana-Online-main/css/styles.css">
 </head>
 
 <body class="text-gray-800">
@@ -37,7 +38,6 @@
 
       <nav class="hidden md:flex items-center gap-8 font-medium">
         <a href="#productos" class="hover:text-red-700 transition">Productos</a>
-        <a href="#promos" class="hover:text-red-700 transition">Promos</a>
         <a href="#nosotros" class="hover:text-red-700 transition">Nosotros</a>
         <a href="#contacto" class="hover:text-red-700 transition">Contacto</a>
       </nav>
@@ -135,69 +135,6 @@
 
   </section>
 
-  <!-- PRODUCTOS -->
-  <section id="productos" class="max-w-7xl mx-auto px-6 py-10">
-
-    <div class="flex items-center justify-between mb-10 flex-wrap gap-4">
-
-      <div>
-        <p class="text-red-700 font-bold uppercase tracking-widest text-sm">
-          Catálogo
-        </p>
-
-        <h3 class="text-4xl font-black">
-          Productos destacados
-        </h3>
-      </div>
-
-      <div class="flex gap-3 flex-wrap">
-
-  <button
-    id="btn-todos"
-    onclick="activarFiltro('todos')"
-    class="filtro-btn bg-red-700 text-white px-5 py-2 rounded-xl transition"
-  >
-    Todos
-  </button>
-
-  <button
-    id="btn-minorista"
-    onclick="activarFiltro('minorista')"
-    class="filtro-btn bg-gray-300 px-5 py-2 rounded-xl transition"
-  >
-    Minorista
-  </button>
-
-  <button
-    id="btn-mayorista"
-    onclick="activarFiltro('mayorista')"
-    class="filtro-btn bg-gray-300 px-5 py-2 rounded-xl transition"
-  >
-    Mayorista
-  </button>
-
-  <button
-    id="btn-destacados"
-    onclick="activarFiltro('destacados')"
-    class="filtro-btn bg-gray-300 px-5 py-2 rounded-xl transition"
-  >
-    Destacados
-  </button>
-
-</div>
-
-    </div>
-
-<div 
-  id="products-container"
-  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
->
-</div>
-
-
-    </div>
-
-  </section>
 
   <!-- PROMOS -->
   <section id="promos" class="py-20 px-6">
@@ -209,28 +146,22 @@
         <div class="p-10 md:p-12 text-center lg:text-left">
 
           <p class="uppercase tracking-[5px] font-bold mb-4 text-sm">
-            Promoción semanal
+            Ofertas especiales
           </p>
 
           <h3 class="text-4xl md:text-5xl font-black leading-tight mb-6">
-            10% OFF en compras mayoristas.
+            Promoción semanal
           </h3>
 
           <p class="text-base md:text-lg text-red-100 mb-8 leading-relaxed">
-            Aprovechá descuentos especiales en cajones, bolsas y combos.
+            Aprovechá precios en cajones, bolsas y combos.
           </p>
-
-          <div class="flex justify-center lg:justify-start">
-            <button class="bg-white text-red-700 px-8 py-4 rounded-2xl font-black hover:scale-105 transition w-full sm:w-auto max-w-[260px]">
-              Pedir ahora
-            </button>
-          </div>
 
         </div>
 
         <img
           src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=1200&auto=format&fit=crop"
-          class="h-auto w-full min-h-[260px] object-cover"
+          class="  object-cover"
         >
 
       </div>
@@ -240,40 +171,58 @@
   </section>
 
   <!-- CLIENTES -->
-  <section id="clientes" class="py-20 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-red-700 font-bold uppercase tracking-widest text-sm mb-3">
-          Clientes
-        </p>
-        <h3 class="text-4xl font-black">
-          Nuestros clientes más importantes
-        </h3>
-      </div>
+<section id="proveedores" class="py-20 bg-white">
 
-      <div class="relative overflow-hidden rounded-[40px] bg-white shadow-xl">
-        <div id="client-carousel" class="carousel-track flex transition-transform duration-500">
-          <!-- Slides se generan desde JavaScript -->
-        </div>
+  <div class="max-w-7xl mx-auto px-6">
 
-        <button
-          onclick="prevClient()"
-          class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-red-700 rounded-full w-12 h-12 shadow-lg hover:bg-white transition"
-          aria-label="Anterior cliente"
-        >
-          ‹
-        </button>
+    <div class="text-center mb-12">
 
-        <button
-          onclick="nextClient()"
-          class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-red-700 rounded-full w-12 h-12 shadow-lg hover:bg-white transition"
-          aria-label="Siguiente cliente"
-        >
-          ›
-        </button>
-      </div>
+      <p class="text-red-700 font-bold uppercase tracking-widest text-sm mb-3">
+        Proveedores
+      </p>
+
+      <h3 class="text-4xl font-black">
+        Empresas que confían en nosotros
+      </h3>
+
+      <p class="text-gray-500 mt-4">
+        Trabajamos con marcas, comercios y cadenas gastronómicas de toda la zona.
+      </p>
+
     </div>
-  </section>
+
+    <div class="proveedores-wrapper">
+
+      <div class="logo-track">
+
+        <img src="assets/provedor/bonafide-logo.png" alt="Bonafide" loading="lazy">
+        <img src="assets/provedor/brixton.jpg" alt="Brixton" loading="lazy">
+        <img src="assets/provedor/larosa.jpg" alt="La Rosa" loading="lazy">
+        <img src="assets/provedor/mordere.jpg" alt="Mordere" loading="lazy">
+        <img src="assets/provedor/martinez.jpg" alt="Martinez" loading="lazy">
+        <img src="assets/provedor/mostaza.jpg" alt="Mostaza" loading="lazy">
+        <img src="assets/provedor/shizen.jpg" alt="Shizen" loading="lazy">
+        <img src="assets/provedor/sushipop.jpg" alt="Sushi Pop" loading="lazy">
+
+        <!-- duplicados para efecto infinito -->
+
+        <img src="assets/provedor/bonafide-logo.png" alt="Bonafide">
+        <img src="assets/provedor/brixton.jpg" alt="Brixton">
+        <img src="assets/provedor/larosa.jpg" alt="La Rosa">
+        <img src="assets/provedor/mordere.jpg" alt="Mordere">
+        <img src="assets/provedor/martinez.jpg" alt="Martinez">
+        <img src="assets/provedor/mostaza.jpg" alt="Mostaza">
+        <img src="assets/provedor/shizen.jpg" alt="Shizen">
+        <img src="assets/provedor/sushipop.jpg" alt="Sushi Pop">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 
   <!-- CONTACTO -->
   <section id="contacto" class="bg-white py-20 px-6 mt-10">
